@@ -106,8 +106,11 @@ def is_fatal_error(error):
 
     if reason == "rateLimitExceeded":
         if message is not None and _is_daily_limit(message):
-            logging.error(message)
-            exit(42)
+            logging.warning(message)
+            logging.warning("Please execute incremental import to get the rest of the data.")
+            for _ in range(3):
+                logging.warning("!!!STREAM HAS BEEN IMPORTED PARTLY!!!")
+            sys.exit(0)
 
     log_msg = message
     if log_msg is None:
