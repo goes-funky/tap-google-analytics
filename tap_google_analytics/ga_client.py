@@ -49,7 +49,7 @@ def split_days(start_date, end_date):
 def backoff_logging(details):
     fmt = "Backing off {0}(...) for {1:.1f}s"
     msg = fmt.format(details['target'].__name__, details['wait'])
-    logger = logging.getLogger("backoff")
+    logger = LOGGER.getLogger("backoff")
 
     exc_typ, exc, _ = sys.exc_info()
     if exc is not None:
@@ -115,7 +115,7 @@ def is_fatal_error(error):
     log_msg = message
     if log_msg is None:
         log_msg = reason
-    logging.warning("request failed with '{}', will retry".format(log_msg))
+    LOGGER.warning("request failed with '{}', will retry".format(log_msg))
 
     if reason in NON_FATAL_ERRORS:
         return False
@@ -158,9 +158,9 @@ class GAClient:
                 token_uri="https://accounts.google.com/o/oauth2/token",
                 user_agent="tap-google-analytics (via singer.io)"
             )
-            logging.info("refreshing access token")
+            LOGGER.info("refreshing access token")
             credentials.refresh(httplib2.Http())
-            logging.info("refreshed successfully")
+            LOGGER.info("refreshed successfully")
             return credentials
         else:
             return ServiceAccountCredentials.from_json_keyfile_dict(config['client_secrets'], SCOPES)
@@ -196,7 +196,7 @@ class GAClient:
             # FIXME: for some reason requesting https://analytics.googleapis.com/analytics/v3/metadata/ga/columns?alt=json
             #        times out every 3rd-4th time, for now just have a hardcoded cache...+
             #        see https://github.com/googleapis/google-api-python-client/issues/709
-            logging.info("use local cached column metadata")
+            LOGGER.info("use local cached column metadata")
             with open(cached_meta_data, "r") as cache_file:
                 results = json.load(cache_file)
         else:
@@ -205,10 +205,10 @@ class GAClient:
             #   metrics and dimensions.
             # (those are not provided in the Analytics Reporting API V4)
             service = build('analytics', 'v3', credentials=self.credentials, cache_discovery=False)
-            logging.info("loading meta data")
+            LOGGER.info("loading meta data")
             results = service.metadata().columns().list(reportType='ga', quotaUser=self.quota_user).execute()
             with open("/tmp/reslts.json", "w") as cache_file:
-                logging.info("loaded meta data")
+                LOGGER.info("loaded meta data")
                 json.dump(results, cache_file, indent=4)
 
         columns = results.get('items', [])
