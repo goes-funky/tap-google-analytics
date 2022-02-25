@@ -49,16 +49,15 @@ def split_days(start_date, end_date):
 def backoff_logging(details):
     fmt = "Backing off {0}(...) for {1:.1f}s"
     msg = fmt.format(details['target'].__name__, details['wait'])
-    logger = LOGGER.getLogger("backoff")
 
     exc_typ, exc, _ = sys.exc_info()
     if exc is not None:
         exc_fmt = traceback.format_exception_only(exc_typ, exc)[-1]
         msg = "{0} ({1})".format(msg, exc_fmt.rstrip("\n"))
-        logger.warning(msg)
+        LOGGER.warning(msg)
     else:
         msg = "{0} ({1})".format(msg, details['value'])
-        logger.info(msg)
+        LOGGER.info(msg)
 
 
 backoff._log_backoff = backoff_logging
