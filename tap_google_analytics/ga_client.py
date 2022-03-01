@@ -30,7 +30,6 @@ NON_FATAL_ERRORS = [
 ]
 
 # Silence the discovery_cache errors
-logging.getLogger('googleapiclient.discovery_cache').setLevel(logging.DEBUG)
 LOGGER = singer.get_logger()
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -105,10 +104,10 @@ def is_fatal_error(error):
 
     if reason == "rateLimitExceeded":
         if message is not None and _is_daily_limit(message):
-            LOGGER.warning(message)
-            LOGGER.warning("\nCheck the Date above to see the day when the importing stopped")
-            LOGGER.warning("\nYour data was partially imported. In order to import the rest of the data, please create "
-                            "an Orchestration.")
+            LOGGER.warning(message + ". Check the Date above to see the day when the importing stopped." +
+                           " Your data was partially imported. In order to import the rest of the data, please create "
+                           "an Orchestration. ")
+
             sys.exit(0)
 
     log_msg = message
