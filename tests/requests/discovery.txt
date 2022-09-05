@@ -1,0 +1,1089 @@
+interactions:
+- request:
+    body: grant_type=refresh_token&<SECRET>
+    headers:
+      accept-encoding:
+      - gzip, deflate
+      content-type:
+      - application/x-www-form-urlencoded
+      user-agent:
+      - tap-google-analytics (via singer.io)
+    method: POST
+    uri: https://accounts.google.com/o/oauth2/token
+  response:
+    body:
+      string: "{\n  \"access_token\": \"<SECRET>\",\n
+        \ \"expires_in\": 3599,\n  \"scope\": \"https://www.googleapis.com/auth/analytics.readonly\",\n
+        \ \"token_type\": \"Bearer\"\n}"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 05 Sep 2022 09:33:04 GMT
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - scaffolding on HTTPServer2
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - X-Origin
+      - Referer
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - '0'
+      content-length:
+      - '350'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      accept-encoding:
+      - gzip, deflate
+      user-agent:
+      - Python-httplib2/0.20.4 (gzip)
+    method: GET
+    uri: https://www.googleapis.com/discovery/v1/apis/analyticsreporting/v4/rest
+  response:
+    body:
+      string: "{\n  \"parameters\": {\n    \"callback\": {\n      \"location\": \"query\",\n
+        \     \"type\": \"string\",\n      \"description\": \"JSONP\"\n    },\n    \"prettyPrint\":
+        {\n      \"location\": \"query\",\n      \"type\": \"boolean\",\n      \"default\":
+        \"true\",\n      \"description\": \"Returns response with indentations and
+        line breaks.\"\n    },\n    \"key\": {\n      \"description\": \"API key.
+        Your API key identifies your project and provides you with API access, quota,
+        and reports. Required unless you provide an OAuth 2.0 token.\",\n      \"type\":
+        \"string\",\n      \"location\": \"query\"\n    },\n    \"upload_protocol\":
+        {\n      \"type\": \"string\",\n      \"description\": \"Upload protocol for
+        media (e.g. \\\"raw\\\", \\\"multipart\\\").\",\n      \"location\": \"query\"\n
+        \   },\n    \"fields\": {\n      \"type\": \"string\",\n      \"location\":
+        \"query\",\n      \"description\": \"Selector specifying which fields to include
+        in a partial response.\"\n    },\n    \"access_token\": {\n      \"description\":
+        \"OAuth access token.\",\n      \"type\": \"string\",\n      \"location\":
+        \"query\"\n    },\n    \"uploadType\": {\n      \"description\": \"Legacy
+        upload protocol for media (e.g. \\\"media\\\", \\\"multipart\\\").\",\n      \"type\":
+        \"string\",\n      \"location\": \"query\"\n    },\n    \"alt\": {\n      \"enum\":
+        [\n        \"json\",\n        \"media\",\n        \"proto\"\n      ],\n      \"location\":
+        \"query\",\n      \"description\": \"Data format for response.\",\n      \"default\":
+        \"json\",\n      \"type\": \"string\",\n      \"enumDescriptions\": [\n        \"Responses
+        with Content-Type of application/json\",\n        \"Media download with context-dependent
+        Content-Type\",\n        \"Responses with Content-Type of application/x-protobuf\"\n
+        \     ]\n    },\n    \"$.xgafv\": {\n      \"description\": \"V1 error format.\",\n
+        \     \"location\": \"query\",\n      \"enumDescriptions\": [\n        \"v1
+        error format\",\n        \"v2 error format\"\n      ],\n      \"enum\": [\n
+        \       \"1\",\n        \"2\"\n      ],\n      \"type\": \"string\"\n    },\n
+        \   \"quotaUser\": {\n      \"location\": \"query\",\n      \"description\":
+        \"Available to use for quota purposes for server-side applications. Can be
+        any arbitrary string assigned to a user, but should not exceed 40 characters.\",\n
+        \     \"type\": \"string\"\n    },\n    \"oauth_token\": {\n      \"type\":
+        \"string\",\n      \"description\": \"OAuth 2.0 token for the current user.\",\n
+        \     \"location\": \"query\"\n    }\n  },\n  \"mtlsRootUrl\": \"https://analyticsreporting.mtls.googleapis.com/\",\n
+        \ \"rootUrl\": \"https://analyticsreporting.googleapis.com/\",\n  \"baseUrl\":
+        \"https://analyticsreporting.googleapis.com/\",\n  \"version\": \"v4\",\n
+        \ \"ownerDomain\": \"google.com\",\n  \"schemas\": {\n    \"SegmentDefinition\":
+        {\n      \"description\": \"SegmentDefinition defines the segment to be a
+        set of SegmentFilters which are combined together with a logical `AND` operation.\",\n
+        \     \"id\": \"SegmentDefinition\",\n      \"properties\": {\n        \"segmentFilters\":
+        {\n          \"description\": \"A segment is defined by a set of segment filters
+        which are combined together with a logical `AND` operation.\",\n          \"type\":
+        \"array\",\n          \"items\": {\n            \"$ref\": \"SegmentFilter\"\n
+        \         }\n        }\n      },\n      \"type\": \"object\"\n    },\n    \"SimpleSegment\":
+        {\n      \"description\": \"A Simple segment conditions consist of one or
+        more dimension/metric conditions that can be combined.\",\n      \"id\": \"SimpleSegment\",\n
+        \     \"properties\": {\n        \"orFiltersForSegment\": {\n          \"description\":
+        \"A list of segment filters groups which are combined with logical `AND` operator.\",\n
+        \         \"items\": {\n            \"$ref\": \"OrFiltersForSegment\"\n          },\n
+        \         \"type\": \"array\"\n        }\n      },\n      \"type\": \"object\"\n
+        \   },\n    \"ProductData\": {\n      \"description\": \"Details of the products
+        in an e-commerce transaction.\",\n      \"properties\": {\n        \"productQuantity\":
+        {\n          \"format\": \"int64\",\n          \"description\": \"Total number
+        of this product units in the transaction.\",\n          \"type\": \"string\"\n
+        \       },\n        \"itemRevenue\": {\n          \"description\": \"The total
+        revenue from purchased product items.\",\n          \"type\": \"number\",\n
+        \         \"format\": \"double\"\n        },\n        \"productName\": {\n
+        \         \"type\": \"string\",\n          \"description\": \"The product
+        name, supplied by the e-commerce tracking application, for the purchased items.\"\n
+        \       },\n        \"productSku\": {\n          \"type\": \"string\",\n          \"description\":
+        \"Unique code that represents the product.\"\n        }\n      },\n      \"id\":
+        \"ProductData\",\n      \"type\": \"object\"\n    },\n    \"ColumnHeader\":
+        {\n      \"type\": \"object\",\n      \"id\": \"ColumnHeader\",\n      \"description\":
+        \"Column headers.\",\n      \"properties\": {\n        \"dimensions\": {\n
+        \         \"description\": \"The dimension names in the response.\",\n          \"type\":
+        \"array\",\n          \"items\": {\n            \"type\": \"string\"\n          }\n
+        \       },\n        \"metricHeader\": {\n          \"description\": \"Metric
+        headers for the metrics in the response.\",\n          \"$ref\": \"MetricHeader\"\n
+        \       }\n      }\n    },\n    \"CustomDimension\": {\n      \"description\":
+        \"Custom dimension.\",\n      \"properties\": {\n        \"index\": {\n          \"type\":
+        \"integer\",\n          \"description\": \"Slot number of custom dimension.\",\n
+        \         \"format\": \"int32\"\n        },\n        \"value\": {\n          \"description\":
+        \"Value of the custom dimension. Default value (i.e. empty string) indicates
+        clearing sesion/visitor scope custom dimension value.\",\n          \"type\":
+        \"string\"\n        }\n      },\n      \"type\": \"object\",\n      \"id\":
+        \"CustomDimension\"\n    },\n    \"Report\": {\n      \"description\": \"The
+        data response corresponding to the request.\",\n      \"type\": \"object\",\n
+        \     \"id\": \"Report\",\n      \"properties\": {\n        \"nextPageToken\":
+        {\n          \"description\": \"Page token to retrieve the next page of results
+        in the list.\",\n          \"type\": \"string\"\n        },\n        \"columnHeader\":
+        {\n          \"$ref\": \"ColumnHeader\",\n          \"description\": \"The
+        column headers.\"\n        },\n        \"data\": {\n          \"description\":
+        \"Response data.\",\n          \"$ref\": \"ReportData\"\n        }\n      }\n
+        \   },\n    \"EcommerceData\": {\n      \"type\": \"object\",\n      \"description\":
+        \"E-commerce details associated with the user activity.\",\n      \"properties\":
+        {\n        \"transaction\": {\n          \"$ref\": \"TransactionData\",\n
+        \         \"description\": \"Transaction details of this e-commerce action.\"\n
+        \       },\n        \"products\": {\n          \"items\": {\n            \"$ref\":
+        \"ProductData\"\n          },\n          \"type\": \"array\",\n          \"description\":
+        \"Details of the products in this transaction.\"\n        },\n        \"actionType\":
+        {\n          \"enum\": [\n            \"UNKNOWN\",\n            \"CLICK\",\n
+        \           \"DETAILS_VIEW\",\n            \"ADD_TO_CART\",\n            \"REMOVE_FROM_CART\",\n
+        \           \"CHECKOUT\",\n            \"PAYMENT\",\n            \"REFUND\",\n
+        \           \"CHECKOUT_OPTION\"\n          ],\n          \"description\":
+        \"Action associated with this e-commerce action.\",\n          \"type\": \"string\",\n
+        \         \"enumDescriptions\": [\n            \"Action type is not known.\",\n
+        \           \"Click through of product lists.\",\n            \"Product detail
+        views.\",\n            \"Add product(s) to cart.\",\n            \"Remove
+        product(s) from cart.\",\n            \"Check out.\",\n            \"Completed
+        purchase.\",\n            \"Refund of purchase.\",\n            \"Checkout
+        options.\"\n          ]\n        },\n        \"ecommerceType\": {\n          \"description\":
+        \"The type of this e-commerce activity.\",\n          \"enumDescriptions\":
+        [\n            \"Used when the e-commerce activity type is unspecified.\",\n
+        \           \"Used when activity has classic (non-enhanced) e-commerce information.\",\n
+        \           \"Used when activity has enhanced e-commerce information.\"\n
+        \         ],\n          \"type\": \"string\",\n          \"enum\": [\n            \"ECOMMERCE_TYPE_UNSPECIFIED\",\n
+        \           \"CLASSIC\",\n            \"ENHANCED\"\n          ]\n        }\n
+        \     },\n      \"id\": \"EcommerceData\"\n    },\n    \"ScreenviewData\":
+        {\n      \"properties\": {\n        \"appName\": {\n          \"description\":
+        \"The application name.\",\n          \"type\": \"string\"\n        },\n        \"mobileDeviceModel\":
+        {\n          \"type\": \"string\",\n          \"description\": \"Mobile device
+        model. Eg: \\\"Pixel\\\", \\\"iPhone\\\" etc.\"\n        },\n        \"screenName\":
+        {\n          \"description\": \"The name of the screen.\",\n          \"type\":
+        \"string\"\n        },\n        \"mobileDeviceBranding\": {\n          \"description\":
+        \"Mobile manufacturer or branded name. Eg: \\\"Google\\\", \\\"Apple\\\" etc.\",\n
+        \         \"type\": \"string\"\n        }\n      },\n      \"id\": \"ScreenviewData\",\n
+        \     \"type\": \"object\"\n    },\n    \"GetReportsResponse\": {\n      \"properties\":
+        {\n        \"reports\": {\n          \"items\": {\n            \"$ref\": \"Report\"\n
+        \         },\n          \"description\": \"Responses corresponding to each
+        of the request.\",\n          \"type\": \"array\"\n        },\n        \"resourceQuotasRemaining\":
+        {\n          \"$ref\": \"ResourceQuotasRemaining\",\n          \"description\":
+        \"The amount of resource quota remaining for the property.\"\n        },\n
+        \       \"queryCost\": {\n          \"format\": \"int32\",\n          \"type\":
+        \"integer\",\n          \"description\": \"The amount of resource quota tokens
+        deducted to execute the query. Includes all responses.\"\n        }\n      },\n
+        \     \"id\": \"GetReportsResponse\",\n      \"type\": \"object\",\n      \"description\":
+        \"The main response class which holds the reports from the Reporting API `batchGet`
+        call.\"\n    },\n    \"MetricFilter\": {\n      \"properties\": {\n        \"not\":
+        {\n          \"type\": \"boolean\",\n          \"description\": \"Logical
+        `NOT` operator. If this boolean is set to true, then the matching metric values
+        will be excluded in the report. The default is false.\"\n        },\n        \"operator\":
+        {\n          \"description\": \"Is the metric `EQUAL`, `LESS_THAN` or `GREATER_THAN`
+        the comparisonValue, the default is `EQUAL`. If the operator is `IS_MISSING`,
+        checks if the metric is missing and would ignore the comparisonValue.\",\n
+        \         \"enumDescriptions\": [\n            \"If the operator is not specified,
+        it is treated as `EQUAL`.\",\n            \"Should the value of the metric
+        be exactly equal to the comparison value.\",\n            \"Should the value
+        of the metric be less than to the comparison value.\",\n            \"Should
+        the value of the metric be greater than to the comparison value.\",\n            \"Validates
+        if the metric is missing. Doesn't take comparisonValue into account.\"\n          ],\n
+        \         \"type\": \"string\",\n          \"enum\": [\n            \"OPERATOR_UNSPECIFIED\",\n
+        \           \"EQUAL\",\n            \"LESS_THAN\",\n            \"GREATER_THAN\",\n
+        \           \"IS_MISSING\"\n          ]\n        },\n        \"comparisonValue\":
+        {\n          \"description\": \"The value to compare against.\",\n          \"type\":
+        \"string\"\n        },\n        \"metricName\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"The metric that will be filtered on. A metricFilter
+        must contain a metric name. A metric name can be an alias earlier defined
+        as a metric or it can also be a metric expression.\"\n        }\n      },\n
+        \     \"type\": \"object\",\n      \"id\": \"MetricFilter\",\n      \"description\":
+        \"MetricFilter specifies the filter on a metric.\"\n    },\n    \"ReportData\":
+        {\n      \"properties\": {\n        \"rows\": {\n          \"type\": \"array\",\n
+        \         \"description\": \"There's one ReportRow for every unique combination
+        of dimensions.\",\n          \"items\": {\n            \"$ref\": \"ReportRow\"\n
+        \         }\n        },\n        \"rowCount\": {\n          \"description\":
+        \"Total number of matching rows for this query.\",\n          \"format\":
+        \"int32\",\n          \"type\": \"integer\"\n        },\n        \"dataLastRefreshed\":
+        {\n          \"description\": \"The last time the data in the report was refreshed.
+        All the hits received before this timestamp are included in the calculation
+        of the report.\",\n          \"format\": \"google-datetime\",\n          \"type\":
+        \"string\"\n        },\n        \"minimums\": {\n          \"description\":
+        \"Minimum and maximum values seen over all matching rows. These are both empty
+        when `hideValueRanges` in the request is false, or when rowCount is zero.\",\n
+        \         \"items\": {\n            \"$ref\": \"DateRangeValues\"\n          },\n
+        \         \"type\": \"array\"\n        },\n        \"maximums\": {\n          \"type\":
+        \"array\",\n          \"description\": \"Minimum and maximum values seen over
+        all matching rows. These are both empty when `hideValueRanges` in the request
+        is false, or when rowCount is zero.\",\n          \"items\": {\n            \"$ref\":
+        \"DateRangeValues\"\n          }\n        },\n        \"isDataGolden\": {\n
+        \         \"type\": \"boolean\",\n          \"description\": \"Indicates if
+        response to this request is golden or not. Data is golden when the exact same
+        request will not produce any new results if asked at a later point in time.\"\n
+        \       },\n        \"emptyReason\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"If empty reason is specified, the report is empty
+        for this reason.\"\n        },\n        \"samplesReadCounts\": {\n          \"items\":
+        {\n            \"format\": \"int64\",\n            \"type\": \"string\"\n
+        \         },\n          \"type\": \"array\",\n          \"description\": \"If
+        the results are [sampled](https://support.google.com/analytics/answer/2637192),
+        this returns the total number of samples read, one entry per date range. If
+        the results are not sampled this field will not be defined. See [developer
+        guide](/analytics/devguides/reporting/core/v4/basics#sampling) for details.\"\n
+        \       },\n        \"totals\": {\n          \"items\": {\n            \"$ref\":
+        \"DateRangeValues\"\n          },\n          \"type\": \"array\",\n          \"description\":
+        \"For each requested date range, for the set of all rows that match the query,
+        every requested value format gets a total. The total for a value format is
+        computed by first totaling the metrics mentioned in the value format and then
+        evaluating the value format as a scalar expression. E.g., The \\\"totals\\\"
+        for `3 / (ga:sessions + 2)` we compute `3 / ((sum of all relevant ga:sessions)
+        + 2)`. Totals are computed before pagination.\"\n        },\n        \"samplingSpaceSizes\":
+        {\n          \"type\": \"array\",\n          \"description\": \"If the results
+        are [sampled](https://support.google.com/analytics/answer/2637192), this returns
+        the total number of samples present, one entry per date range. If the results
+        are not sampled this field will not be defined. See [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        for details.\",\n          \"items\": {\n            \"format\": \"int64\",\n
+        \           \"type\": \"string\"\n          }\n        }\n      },\n      \"type\":
+        \"object\",\n      \"id\": \"ReportData\",\n      \"description\": \"The data
+        part of the report.\"\n    },\n    \"DateRangeValues\": {\n      \"properties\":
+        {\n        \"pivotValueRegions\": {\n          \"type\": \"array\",\n          \"items\":
+        {\n            \"$ref\": \"PivotValueRegion\"\n          },\n          \"description\":
+        \"The values of each pivot region.\"\n        },\n        \"values\": {\n
+        \         \"type\": \"array\",\n          \"items\": {\n            \"type\":
+        \"string\"\n          },\n          \"description\": \"Each value corresponds
+        to each Metric in the request.\"\n        }\n      },\n      \"type\": \"object\",\n
+        \     \"description\": \"Used to return a list of metrics for a single DateRange
+        / dimension combination\",\n      \"id\": \"DateRangeValues\"\n    },\n    \"PivotValueRegion\":
+        {\n      \"description\": \"The metric values in the pivot region.\",\n      \"properties\":
+        {\n        \"values\": {\n          \"type\": \"array\",\n          \"description\":
+        \"The values of the metrics in each of the pivot regions.\",\n          \"items\":
+        {\n            \"type\": \"string\"\n          }\n        }\n      },\n      \"type\":
+        \"object\",\n      \"id\": \"PivotValueRegion\"\n    },\n    \"EventData\":
+        {\n      \"id\": \"EventData\",\n      \"description\": \"Represents all the
+        details pertaining to an event.\",\n      \"properties\": {\n        \"eventCategory\":
+        {\n          \"type\": \"string\",\n          \"description\": \"The object
+        on the page that was interacted with. Eg: 'Video'.\"\n        },\n        \"eventLabel\":
+        {\n          \"description\": \"Label attached with the event.\",\n          \"type\":
+        \"string\"\n        },\n        \"eventAction\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"Type of interaction with the object. Eg: 'play'.\"\n
+        \       },\n        \"eventValue\": {\n          \"type\": \"string\",\n          \"format\":
+        \"int64\",\n          \"description\": \"Numeric value associated with the
+        event.\"\n        },\n        \"eventCount\": {\n          \"description\":
+        \"Number of such events in this activity.\",\n          \"type\": \"string\",\n
+        \         \"format\": \"int64\"\n        }\n      },\n      \"type\": \"object\"\n
+        \   },\n    \"Metric\": {\n      \"id\": \"Metric\",\n      \"properties\":
+        {\n        \"expression\": {\n          \"description\": \"A metric expression
+        in the request. An expression is constructed from one or more metrics and
+        numbers. Accepted operators include: Plus (+), Minus (-), Negation (Unary
+        -), Divided by (/), Multiplied by (*), Parenthesis, Positive cardinal numbers
+        (0-9), can include decimals and is limited to 1024 characters. Example `ga:totalRefunds/ga:users`,
+        in most cases the metric expression is just a single metric name like `ga:users`.
+        Adding mixed `MetricType` (E.g., `CURRENCY` + `PERCENTAGE`) metrics will result
+        in unexpected results.\",\n          \"type\": \"string\"\n        },\n        \"formattingType\":
+        {\n          \"enum\": [\n            \"METRIC_TYPE_UNSPECIFIED\",\n            \"INTEGER\",\n
+        \           \"FLOAT\",\n            \"CURRENCY\",\n            \"PERCENT\",\n
+        \           \"TIME\"\n          ],\n          \"type\": \"string\",\n          \"enumDescriptions\":
+        [\n            \"Metric type is unspecified.\",\n            \"Integer metric.\",\n
+        \           \"Float metric.\",\n            \"Currency metric.\",\n            \"Percentage
+        metric.\",\n            \"Time metric in `HH:MM:SS` format.\"\n          ],\n
+        \         \"description\": \"Specifies how the metric expression should be
+        formatted, for example `INTEGER`.\"\n        },\n        \"alias\": {\n          \"description\":
+        \"An alias for the metric expression is an alternate name for the expression.
+        The alias can be used for filtering and sorting. This field is optional and
+        is useful if the expression is not a single metric but a complex expression
+        which cannot be used in filtering and sorting. The alias is also used in the
+        response column header.\",\n          \"type\": \"string\"\n        }\n      },\n
+        \     \"description\": \"[Metrics](https://support.google.com/analytics/answer/1033861)
+        are the quantitative measurements. For example, the metric `ga:users` indicates
+        the total number of users for the requested time period.\",\n      \"type\":
+        \"object\"\n    },\n    \"PivotHeader\": {\n      \"type\": \"object\",\n
+        \     \"id\": \"PivotHeader\",\n      \"description\": \"The headers for each
+        of the pivot sections defined in the request.\",\n      \"properties\": {\n
+        \       \"totalPivotGroupsCount\": {\n          \"type\": \"integer\",\n          \"format\":
+        \"int32\",\n          \"description\": \"The total number of groups for this
+        pivot.\"\n        },\n        \"pivotHeaderEntries\": {\n          \"items\":
+        {\n            \"$ref\": \"PivotHeaderEntry\"\n          },\n          \"type\":
+        \"array\",\n          \"description\": \"A single pivot section header.\"\n
+        \       }\n      }\n    },\n    \"OrFiltersForSegment\": {\n      \"id\":
+        \"OrFiltersForSegment\",\n      \"type\": \"object\",\n      \"properties\":
+        {\n        \"segmentFilterClauses\": {\n          \"description\": \"List
+        of segment filters to be combined with a `OR` operator.\",\n          \"items\":
+        {\n            \"$ref\": \"SegmentFilterClause\"\n          },\n          \"type\":
+        \"array\"\n        }\n      },\n      \"description\": \"A list of segment
+        filters in the `OR` group are combined with the logical OR operator.\"\n    },\n
+        \   \"ReportRow\": {\n      \"type\": \"object\",\n      \"id\": \"ReportRow\",\n
+        \     \"properties\": {\n        \"dimensions\": {\n          \"description\":
+        \"List of requested dimensions.\",\n          \"items\": {\n            \"type\":
+        \"string\"\n          },\n          \"type\": \"array\"\n        },\n        \"metrics\":
+        {\n          \"items\": {\n            \"$ref\": \"DateRangeValues\"\n          },\n
+        \         \"description\": \"List of metrics for each requested DateRange.\",\n
+        \         \"type\": \"array\"\n        }\n      },\n      \"description\":
+        \"A row in the report.\"\n    },\n    \"ResourceQuotasRemaining\": {\n      \"description\":
+        \"The resource quota tokens remaining for the property after the request is
+        completed.\",\n      \"properties\": {\n        \"dailyQuotaTokensRemaining\":
+        {\n          \"type\": \"integer\",\n          \"description\": \"Daily resource
+        quota remaining remaining.\",\n          \"format\": \"int32\"\n        },\n
+        \       \"hourlyQuotaTokensRemaining\": {\n          \"format\": \"int32\",\n
+        \         \"description\": \"Hourly resource quota tokens remaining.\",\n
+        \         \"type\": \"integer\"\n        }\n      },\n      \"id\": \"ResourceQuotasRemaining\",\n
+        \     \"type\": \"object\"\n    },\n    \"GoalData\": {\n      \"type\": \"object\",\n
+        \     \"properties\": {\n        \"goalCompletionLocation\": {\n          \"description\":
+        \"URL of the page where this goal was completed.\",\n          \"type\": \"string\"\n
+        \       },\n        \"goalCompletions\": {\n          \"type\": \"string\",\n
+        \         \"format\": \"int64\",\n          \"description\": \"Total number
+        of goal completions in this activity.\"\n        },\n        \"goalPreviousStep3\":
+        {\n          \"description\": \"URL of the page three steps prior to the goal
+        completion.\",\n          \"type\": \"string\"\n        },\n        \"goalName\":
+        {\n          \"type\": \"string\",\n          \"description\": \"Name of the
+        goal.\"\n        },\n        \"goalPreviousStep1\": {\n          \"description\":
+        \"URL of the page one step prior to the goal completion.\",\n          \"type\":
+        \"string\"\n        },\n        \"goalIndex\": {\n          \"format\": \"int32\",\n
+        \         \"type\": \"integer\",\n          \"description\": \"This identifies
+        the goal as configured for the profile.\"\n        },\n        \"goalValue\":
+        {\n          \"description\": \"Value in this goal.\",\n          \"format\":
+        \"double\",\n          \"type\": \"number\"\n        },\n        \"goalPreviousStep2\":
+        {\n          \"type\": \"string\",\n          \"description\": \"URL of the
+        page two steps prior to the goal completion.\"\n        }\n      },\n      \"description\":
+        \"Represents all the details pertaining to a goal.\",\n      \"id\": \"GoalData\"\n
+        \   },\n    \"SegmentMetricFilter\": {\n      \"id\": \"SegmentMetricFilter\",\n
+        \     \"properties\": {\n        \"operator\": {\n          \"enumDescriptions\":
+        [\n            \"Unspecified operator is treated as `LESS_THAN` operator.\",\n
+        \           \"Checks if the metric value is less than comparison value.\",\n
+        \           \"Checks if the metric value is greater than comparison value.\",\n
+        \           \"Equals operator.\",\n            \"For between operator, both
+        the minimum and maximum are exclusive. We will use `LT` and `GT` for comparison.\"\n
+        \         ],\n          \"type\": \"string\",\n          \"description\":
+        \"Specifies is the operation to perform to compare the metric. The default
+        is `EQUAL`.\",\n          \"enum\": [\n            \"UNSPECIFIED_OPERATOR\",\n
+        \           \"LESS_THAN\",\n            \"GREATER_THAN\",\n            \"EQUAL\",\n
+        \           \"BETWEEN\"\n          ]\n        },\n        \"scope\": {\n          \"enumDescriptions\":
+        [\n            \"If the scope is unspecified, it defaults to the condition
+        scope, `USER` or `SESSION` depending on if the segment is trying to choose
+        users or sessions.\",\n            \"Product scope.\",\n            \"Hit
+        scope.\",\n            \"Session scope.\",\n            \"User scope.\"\n
+        \         ],\n          \"type\": \"string\",\n          \"description\":
+        \"Scope for a metric defines the level at which that metric is defined. The
+        specified metric scope must be equal to or greater than its primary scope
+        as defined in the data model. The primary scope is defined by if the segment
+        is selecting users or sessions.\",\n          \"enum\": [\n            \"UNSPECIFIED_SCOPE\",\n
+        \           \"PRODUCT\",\n            \"HIT\",\n            \"SESSION\",\n
+        \           \"USER\"\n          ]\n        },\n        \"comparisonValue\":
+        {\n          \"description\": \"The value to compare against. If the operator
+        is `BETWEEN`, this value is treated as minimum comparison value.\",\n          \"type\":
+        \"string\"\n        },\n        \"metricName\": {\n          \"description\":
+        \"The metric that will be filtered on. A `metricFilter` must contain a metric
+        name.\",\n          \"type\": \"string\"\n        },\n        \"maxComparisonValue\":
+        {\n          \"type\": \"string\",\n          \"description\": \"Max comparison
+        value is only used for `BETWEEN` operator.\"\n        }\n      },\n      \"type\":
+        \"object\",\n      \"description\": \"Metric filter to be used in a segment
+        filter clause.\"\n    },\n    \"SearchUserActivityRequest\": {\n      \"description\":
+        \"The request to fetch User Report from Reporting API `userActivity:get` call.\",\n
+        \     \"type\": \"object\",\n      \"properties\": {\n        \"activityTypes\":
+        {\n          \"type\": \"array\",\n          \"description\": \"Set of all
+        activity types being requested. Only acvities matching these types will be
+        returned in the response. If empty, all activies will be returned.\",\n          \"items\":
+        {\n            \"enumDescriptions\": [\n              \"ActivityType will
+        never have this value in the response. Using this type in the request will
+        result in an error.\",\n              \"Used when the activity resulted out
+        of a visitor viewing a page.\",\n              \"Used when the activity resulted
+        out of a visitor using an application on a mobile device.\",\n              \"Used
+        to denote that a goal type activity.\",\n              \"An e-commerce transaction
+        was performed by the visitor on the page.\",\n              \"Used when the
+        activity is an event.\"\n            ],\n            \"enum\": [\n              \"ACTIVITY_TYPE_UNSPECIFIED\",\n
+        \             \"PAGEVIEW\",\n              \"SCREENVIEW\",\n              \"GOAL\",\n
+        \             \"ECOMMERCE\",\n              \"EVENT\"\n            ],\n            \"type\":
+        \"string\"\n          }\n        },\n        \"viewId\": {\n          \"description\":
+        \"Required. The Analytics [view ID](https://support.google.com/analytics/answer/1009618)
+        from which to retrieve data. Every [SearchUserActivityRequest](#SearchUserActivityRequest)
+        must contain the `viewId`.\",\n          \"type\": \"string\"\n        },\n
+        \       \"pageToken\": {\n          \"type\": \"string\",\n          \"description\":
+        \"A continuation token to get the next page of the results. Adding this to
+        the request will return the rows after the pageToken. The pageToken should
+        be the value returned in the nextPageToken parameter in the response to the
+        [SearchUserActivityRequest](#SearchUserActivityRequest) request.\"\n        },\n
+        \       \"dateRange\": {\n          \"description\": \"Date range for which
+        to retrieve the user activity. If a date range is not provided, the default
+        date range is (startDate: current date - 7 days, endDate: current date - 1
+        day).\",\n          \"$ref\": \"DateRange\"\n        },\n        \"user\":
+        {\n          \"$ref\": \"User\",\n          \"description\": \"Required. Unique
+        user Id to query for. Every [SearchUserActivityRequest](#SearchUserActivityRequest)
+        must contain this field.\"\n        },\n        \"pageSize\": {\n          \"description\":
+        \"Page size is for paging and specifies the maximum number of returned rows.
+        Page size should be \\u003e 0. If the value is 0 or if the field isn't specified,
+        the request returns the default of 1000 rows per page.\",\n          \"type\":
+        \"integer\",\n          \"format\": \"int32\"\n        }\n      },\n      \"id\":
+        \"SearchUserActivityRequest\"\n    },\n    \"MetricFilterClause\": {\n      \"properties\":
+        {\n        \"filters\": {\n          \"type\": \"array\",\n          \"items\":
+        {\n            \"$ref\": \"MetricFilter\"\n          },\n          \"description\":
+        \"The repeated set of filters. They are logically combined based on the operator
+        specified.\"\n        },\n        \"operator\": {\n          \"enum\": [\n
+        \           \"OPERATOR_UNSPECIFIED\",\n            \"OR\",\n            \"AND\"\n
+        \         ],\n          \"description\": \"The operator for combining multiple
+        metric filters. If unspecified, it is treated as an `OR`.\",\n          \"enumDescriptions\":
+        [\n            \"Unspecified operator. It is treated as an `OR`.\",\n            \"The
+        logical `OR` operator.\",\n            \"The logical `AND` operator.\"\n          ],\n
+        \         \"type\": \"string\"\n        }\n      },\n      \"description\":
+        \"Represents a group of metric filters. Set the operator value to specify
+        how the filters are logically combined.\",\n      \"type\": \"object\",\n
+        \     \"id\": \"MetricFilterClause\"\n    },\n    \"SegmentFilter\": {\n      \"properties\":
+        {\n        \"not\": {\n          \"type\": \"boolean\",\n          \"description\":
+        \"If true, match the complement of simple or sequence segment. For example,
+        to match all visits not from \\\"New York\\\", we can define the segment as
+        follows: \\\"sessionSegment\\\": { \\\"segmentFilters\\\": [{ \\\"simpleSegment\\\"
+        :{ \\\"orFiltersForSegment\\\": [{ \\\"segmentFilterClauses\\\":[{ \\\"dimensionFilter\\\":
+        { \\\"dimensionName\\\": \\\"ga:city\\\", \\\"expressions\\\": [\\\"New York\\\"]
+        } }] }] }, \\\"not\\\": \\\"True\\\" }] },\"\n        },\n        \"simpleSegment\":
+        {\n          \"description\": \"A Simple segment conditions consist of one
+        or more dimension/metric conditions that can be combined\",\n          \"$ref\":
+        \"SimpleSegment\"\n        },\n        \"sequenceSegment\": {\n          \"description\":
+        \"Sequence conditions consist of one or more steps, where each step is defined
+        by one or more dimension/metric conditions. Multiple steps can be combined
+        with special sequence operators.\",\n          \"$ref\": \"SequenceSegment\"\n
+        \       }\n      },\n      \"type\": \"object\",\n      \"description\": \"SegmentFilter
+        defines the segment to be either a simple or a sequence segment. A simple
+        segment condition contains dimension and metric conditions to select the sessions
+        or users. A sequence segment condition can be used to select users or sessions
+        based on sequential conditions.\",\n      \"id\": \"SegmentFilter\"\n    },\n
+        \   \"Segment\": {\n      \"type\": \"object\",\n      \"properties\": {\n
+        \       \"dynamicSegment\": {\n          \"$ref\": \"DynamicSegment\",\n          \"description\":
+        \"A dynamic segment definition in the request.\"\n        },\n        \"segmentId\":
+        {\n          \"description\": \"The segment ID of a built-in or custom segment,
+        for example `gaid::-3`.\",\n          \"type\": \"string\"\n        }\n      },\n
+        \     \"id\": \"Segment\",\n      \"description\": \"The segment definition,
+        if the report needs to be segmented. A Segment is a subset of the Analytics
+        data. For example, of the entire set of users, one Segment might be users
+        from a particular country or city.\"\n    },\n    \"DimensionFilterClause\":
+        {\n      \"properties\": {\n        \"operator\": {\n          \"type\": \"string\",\n
+        \         \"enumDescriptions\": [\n            \"Unspecified operator. It
+        is treated as an `OR`.\",\n            \"The logical `OR` operator.\",\n            \"The
+        logical `AND` operator.\"\n          ],\n          \"enum\": [\n            \"OPERATOR_UNSPECIFIED\",\n
+        \           \"OR\",\n            \"AND\"\n          ],\n          \"description\":
+        \"The operator for combining multiple dimension filters. If unspecified, it
+        is treated as an `OR`.\"\n        },\n        \"filters\": {\n          \"type\":
+        \"array\",\n          \"description\": \"The repeated set of filters. They
+        are logically combined based on the operator specified.\",\n          \"items\":
+        {\n            \"$ref\": \"DimensionFilter\"\n          }\n        }\n      },\n
+        \     \"type\": \"object\",\n      \"id\": \"DimensionFilterClause\",\n      \"description\":
+        \"A group of dimension filters. Set the operator value to specify how the
+        filters are logically combined.\"\n    },\n    \"SegmentFilterClause\": {\n
+        \     \"properties\": {\n        \"dimensionFilter\": {\n          \"description\":
+        \"Dimension Filter for the segment definition.\",\n          \"$ref\": \"SegmentDimensionFilter\"\n
+        \       },\n        \"metricFilter\": {\n          \"description\": \"Metric
+        Filter for the segment definition.\",\n          \"$ref\": \"SegmentMetricFilter\"\n
+        \       },\n        \"not\": {\n          \"description\": \"Matches the complement
+        (`!`) of the filter.\",\n          \"type\": \"boolean\"\n        }\n      },\n
+        \     \"type\": \"object\",\n      \"id\": \"SegmentFilterClause\",\n      \"description\":
+        \"Filter Clause to be used in a segment definition, can be wither a metric
+        or a dimension filter.\"\n    },\n    \"Cohort\": {\n      \"type\": \"object\",\n
+        \     \"description\": \"Defines a cohort. A cohort is a group of users who
+        share a common characteristic. For example, all users with the same acquisition
+        date belong to the same cohort.\",\n      \"id\": \"Cohort\",\n      \"properties\":
+        {\n        \"dateRange\": {\n          \"$ref\": \"DateRange\",\n          \"description\":
+        \"This is used for `FIRST_VISIT_DATE` cohort, the cohort selects users whose
+        first visit date is between start date and end date defined in the DateRange.
+        The date ranges should be aligned for cohort requests. If the request contains
+        `ga:cohortNthDay` it should be exactly one day long, if `ga:cohortNthWeek`
+        it should be aligned to the week boundary (starting at Sunday and ending Saturday),
+        and for `ga:cohortNthMonth` the date range should be aligned to the month
+        (starting at the first and ending on the last day of the month). For LTV requests
+        there are no such restrictions. You do not need to supply a date range for
+        the `reportsRequest.dateRanges` field.\"\n        },\n        \"type\": {\n
+        \         \"enum\": [\n            \"UNSPECIFIED_COHORT_TYPE\",\n            \"FIRST_VISIT_DATE\"\n
+        \         ],\n          \"enumDescriptions\": [\n            \"If unspecified
+        it's treated as `FIRST_VISIT_DATE`.\",\n            \"Cohorts that are selected
+        based on first visit date.\"\n          ],\n          \"type\": \"string\",\n
+        \         \"description\": \"Type of the cohort. The only supported type as
+        of now is `FIRST_VISIT_DATE`. If this field is unspecified the cohort is treated
+        as `FIRST_VISIT_DATE` type cohort.\"\n        },\n        \"name\": {\n          \"description\":
+        \"A unique name for the cohort. If not defined name will be auto-generated
+        with values cohort_[1234...].\",\n          \"type\": \"string\"\n        }\n
+        \     }\n    },\n    \"CohortGroup\": {\n      \"properties\": {\n        \"lifetimeValue\":
+        {\n          \"type\": \"boolean\",\n          \"description\": \"Enable Life
+        Time Value (LTV). LTV measures lifetime value for users acquired through different
+        channels. Please see: [Cohort Analysis](https://support.google.com/analytics/answer/6074676)
+        and [Lifetime Value](https://support.google.com/analytics/answer/6182550)
+        If the value of lifetimeValue is false: - The metric values are similar to
+        the values in the web interface cohort report. - The cohort definition date
+        ranges must be aligned to the calendar week and month. i.e. while requesting
+        `ga:cohortNthWeek` the `startDate` in the cohort definition should be a Sunday
+        and the `endDate` should be the following Saturday, and for `ga:cohortNthMonth`,
+        the `startDate` should be the 1st of the month and `endDate` should be the
+        last day of the month. When the lifetimeValue is true: - The metric values
+        will correspond to the values in the web interface LifeTime value report.
+        - The Lifetime Value report shows you how user value (Revenue) and engagement
+        (Appviews, Goal Completions, Sessions, and Session Duration) grow during the
+        90 days after a user is acquired. - The metrics are calculated as a cumulative
+        average per user per the time increment. - The cohort definition date ranges
+        need not be aligned to the calendar week and month boundaries. - The `viewId`
+        must be an [app view ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)\"\n
+        \       },\n        \"cohorts\": {\n          \"items\": {\n            \"$ref\":
+        \"Cohort\"\n          },\n          \"description\": \"The definition for
+        the cohort.\",\n          \"type\": \"array\"\n        }\n      },\n      \"id\":
+        \"CohortGroup\",\n      \"type\": \"object\",\n      \"description\": \"Defines
+        a cohort group. For example: \\\"cohortGroup\\\": { \\\"cohorts\\\": [{ \\\"name\\\":
+        \\\"cohort 1\\\", \\\"type\\\": \\\"FIRST_VISIT_DATE\\\", \\\"dateRange\\\":
+        { \\\"startDate\\\": \\\"2015-08-01\\\", \\\"endDate\\\": \\\"2015-08-01\\\"
+        } },{ \\\"name\\\": \\\"cohort 2\\\" \\\"type\\\": \\\"FIRST_VISIT_DATE\\\"
+        \\\"dateRange\\\": { \\\"startDate\\\": \\\"2015-07-01\\\", \\\"endDate\\\":
+        \\\"2015-07-01\\\" } }] }\"\n    },\n    \"GoalSetData\": {\n      \"id\":
+        \"GoalSetData\",\n      \"properties\": {\n        \"goals\": {\n          \"type\":
+        \"array\",\n          \"description\": \"All the goals that were reached in
+        the current activity.\",\n          \"items\": {\n            \"$ref\": \"GoalData\"\n
+        \         }\n        }\n      },\n      \"type\": \"object\",\n      \"description\":
+        \"Represents a set of goals that were reached in an activity.\"\n    },\n
+        \   \"MetricHeaderEntry\": {\n      \"id\": \"MetricHeaderEntry\",\n      \"type\":
+        \"object\",\n      \"description\": \"Header for the metrics.\",\n      \"properties\":
+        {\n        \"name\": {\n          \"type\": \"string\",\n          \"description\":
+        \"The name of the header.\"\n        },\n        \"type\": {\n          \"enum\":
+        [\n            \"METRIC_TYPE_UNSPECIFIED\",\n            \"INTEGER\",\n            \"FLOAT\",\n
+        \           \"CURRENCY\",\n            \"PERCENT\",\n            \"TIME\"\n
+        \         ],\n          \"type\": \"string\",\n          \"description\":
+        \"The type of the metric, for example `INTEGER`.\",\n          \"enumDescriptions\":
+        [\n            \"Metric type is unspecified.\",\n            \"Integer metric.\",\n
+        \           \"Float metric.\",\n            \"Currency metric.\",\n            \"Percentage
+        metric.\",\n            \"Time metric in `HH:MM:SS` format.\"\n          ]\n
+        \       }\n      }\n    },\n    \"SegmentSequenceStep\": {\n      \"type\":
+        \"object\",\n      \"description\": \"A segment sequence definition.\",\n
+        \     \"id\": \"SegmentSequenceStep\",\n      \"properties\": {\n        \"orFiltersForSegment\":
+        {\n          \"items\": {\n            \"$ref\": \"OrFiltersForSegment\"\n
+        \         },\n          \"type\": \"array\",\n          \"description\": \"A
+        sequence is specified with a list of Or grouped filters which are combined
+        with `AND` operator.\"\n        },\n        \"matchType\": {\n          \"enum\":
+        [\n            \"UNSPECIFIED_MATCH_TYPE\",\n            \"PRECEDES\",\n            \"IMMEDIATELY_PRECEDES\"\n
+        \         ],\n          \"type\": \"string\",\n          \"enumDescriptions\":
+        [\n            \"Unspecified match type is treated as precedes.\",\n            \"Operator
+        indicates that the previous step precedes the next step.\",\n            \"Operator
+        indicates that the previous step immediately precedes the next step.\"\n          ],\n
+        \         \"description\": \"Specifies if the step immediately precedes or
+        can be any time before the next step.\"\n        }\n      }\n    },\n    \"GetReportsRequest\":
+        {\n      \"description\": \"The batch request containing multiple report request.\",\n
+        \     \"id\": \"GetReportsRequest\",\n      \"type\": \"object\",\n      \"properties\":
+        {\n        \"reportRequests\": {\n          \"type\": \"array\",\n          \"description\":
+        \"Requests, each request will have a separate response. There can be a maximum
+        of 5 requests. All requests should have the same `dateRanges`, `viewId`, `segments`,
+        `samplingLevel`, and `cohortGroup`.\",\n          \"items\": {\n            \"$ref\":
+        \"ReportRequest\"\n          }\n        },\n        \"useResourceQuotas\":
+        {\n          \"description\": \"Enables [resource based quotas](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),
+        (defaults to `False`). If this field is set to `True` the per view (profile)
+        quotas are governed by the computational cost of the request. Note that using
+        cost based quotas will higher enable sampling rates. (10 Million for `SMALL`,
+        100M for `LARGE`. See the [limits and quotas documentation](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)
+        for details.\",\n          \"type\": \"boolean\"\n        }\n      }\n    },\n
+        \   \"User\": {\n      \"id\": \"User\",\n      \"description\": \"Contains
+        information to identify a particular user uniquely.\",\n      \"properties\":
+        {\n        \"userId\": {\n          \"description\": \"Unique Id of the user
+        for which the data is being requested.\",\n          \"type\": \"string\"\n
+        \       },\n        \"type\": {\n          \"type\": \"string\",\n          \"enumDescriptions\":
+        [\n            \"When the User Id Type is not specified, the default type
+        used will be CLIENT_ID.\",\n            \"A single user, like a signed-in
+        user account, that may interact with content across one or more devices and
+        / or browser instances.\",\n            \"Analytics assigned client_id.\"\n
+        \         ],\n          \"description\": \"Type of the user in the request.
+        The field `userId` is associated with this type.\",\n          \"enum\": [\n
+        \           \"USER_ID_TYPE_UNSPECIFIED\",\n            \"USER_ID\",\n            \"CLIENT_ID\"\n
+        \         ]\n        }\n      },\n      \"type\": \"object\"\n    },\n    \"Dimension\":
+        {\n      \"description\": \"[Dimensions](https://support.google.com/analytics/answer/1033861)
+        are attributes of your data. For example, the dimension `ga:city` indicates
+        the city, for example, \\\"Paris\\\" or \\\"New York\\\", from which a session
+        originates.\",\n      \"id\": \"Dimension\",\n      \"type\": \"object\",\n
+        \     \"properties\": {\n        \"name\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"Name of the dimension to fetch, for example `ga:browser`.\"\n
+        \       },\n        \"histogramBuckets\": {\n          \"items\": {\n            \"format\":
+        \"int64\",\n            \"type\": \"string\"\n          },\n          \"description\":
+        \"If non-empty, we place dimension values into buckets after string to int64.
+        Dimension values that are not the string representation of an integral value
+        will be converted to zero. The bucket values have to be in increasing order.
+        Each bucket is closed on the lower end, and open on the upper end. The \\\"first\\\"
+        bucket includes all values less than the first boundary, the \\\"last\\\"
+        bucket includes all values up to infinity. Dimension values that fall in a
+        bucket get transformed to a new dimension value. For example, if one gives
+        a list of \\\"0, 1, 3, 4, 7\\\", then we return the following buckets: - bucket
+        #1: values \\u003c 0, dimension value \\\"\\u003c0\\\" - bucket #2: values
+        in [0,1), dimension value \\\"0\\\" - bucket #3: values in [1,3), dimension
+        value \\\"1-2\\\" - bucket #4: values in [3,4), dimension value \\\"3\\\"
+        - bucket #5: values in [4,7), dimension value \\\"4-6\\\" - bucket #6: values
+        \\u003e= 7, dimension value \\\"7+\\\" NOTE: If you are applying histogram
+        mutation on any dimension, and using that dimension in sort, you will want
+        to use the sort type `HISTOGRAM_BUCKET` for that purpose. Without that the
+        dimension values will be sorted according to dictionary (lexicographic) order.
+        For example the ascending dictionary order is: \\\"\\u003c50\\\", \\\"1001+\\\",
+        \\\"121-1000\\\", \\\"50-120\\\" And the ascending `HISTOGRAM_BUCKET` order
+        is: \\\"\\u003c50\\\", \\\"50-120\\\", \\\"121-1000\\\", \\\"1001+\\\" The
+        client has to explicitly request `\\\"orderType\\\": \\\"HISTOGRAM_BUCKET\\\"`
+        for a histogram-mutated dimension.\",\n          \"type\": \"array\"\n        }\n
+        \     }\n    },\n    \"OrderBy\": {\n      \"description\": \"Specifies the
+        sorting options.\",\n      \"id\": \"OrderBy\",\n      \"properties\": {\n
+        \       \"orderType\": {\n          \"enumDescriptions\": [\n            \"Unspecified
+        order type will be treated as sort based on value.\",\n            \"The sort
+        order is based on the value of the chosen column; looks only at the first
+        date range.\",\n            \"The sort order is based on the difference of
+        the values of the chosen column between the first two date ranges. Usable
+        only if there are exactly two date ranges.\",\n            \"The sort order
+        is based on weighted value of the chosen column. If column has n/d format,
+        then weighted value of this ratio will be `(n + totals.n)/(d + totals.d)`
+        Usable only for metrics that represent ratios.\",\n            \"Histogram
+        order type is applicable only to dimension columns with non-empty histogram-buckets.\",\n
+        \           \"If the dimensions are fixed length numbers, ordinary sort would
+        just work fine. `DIMENSION_AS_INTEGER` can be used if the dimensions are variable
+        length numbers.\"\n          ],\n          \"enum\": [\n            \"ORDER_TYPE_UNSPECIFIED\",\n
+        \           \"VALUE\",\n            \"DELTA\",\n            \"SMART\",\n            \"HISTOGRAM_BUCKET\",\n
+        \           \"DIMENSION_AS_INTEGER\"\n          ],\n          \"type\": \"string\",\n
+        \         \"description\": \"The order type. The default orderType is `VALUE`.\"\n
+        \       },\n        \"fieldName\": {\n          \"type\": \"string\",\n          \"description\":
+        \"The field which to sort by. The default sort order is ascending. Example:
+        `ga:browser`. Note, that you can only specify one field for sort here. For
+        example, `ga:browser, ga:city` is not valid.\"\n        },\n        \"sortOrder\":
+        {\n          \"description\": \"The sorting order for the field.\",\n          \"enum\":
+        [\n            \"SORT_ORDER_UNSPECIFIED\",\n            \"ASCENDING\",\n            \"DESCENDING\"\n
+        \         ],\n          \"type\": \"string\",\n          \"enumDescriptions\":
+        [\n            \"If the sort order is unspecified, the default is ascending.\",\n
+        \           \"Ascending sort. The field will be sorted in an ascending manner.\",\n
+        \           \"Descending sort. The field will be sorted in a descending manner.\"\n
+        \         ]\n        }\n      },\n      \"type\": \"object\"\n    },\n    \"DimensionFilter\":
+        {\n      \"properties\": {\n        \"not\": {\n          \"type\": \"boolean\",\n
+        \         \"description\": \"Logical `NOT` operator. If this boolean is set
+        to true, then the matching dimension values will be excluded in the report.
+        The default is false.\"\n        },\n        \"dimensionName\": {\n          \"type\":
+        \"string\",\n          \"description\": \"The dimension to filter on. A DimensionFilter
+        must contain a dimension.\"\n        },\n        \"caseSensitive\": {\n          \"description\":
+        \"Should the match be case sensitive? Default is false.\",\n          \"type\":
+        \"boolean\"\n        },\n        \"operator\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"How to match the dimension to the expression.
+        The default is REGEXP.\",\n          \"enum\": [\n            \"OPERATOR_UNSPECIFIED\",\n
+        \           \"REGEXP\",\n            \"BEGINS_WITH\",\n            \"ENDS_WITH\",\n
+        \           \"PARTIAL\",\n            \"EXACT\",\n            \"NUMERIC_EQUAL\",\n
+        \           \"NUMERIC_GREATER_THAN\",\n            \"NUMERIC_LESS_THAN\",\n
+        \           \"IN_LIST\"\n          ],\n          \"enumDescriptions\": [\n
+        \           \"If the match type is unspecified, it is treated as a `REGEXP`.\",\n
+        \           \"The match expression is treated as a regular expression. All
+        match types are not treated as regular expressions.\",\n            \"Matches
+        the value which begin with the match expression provided.\",\n            \"Matches
+        the values which end with the match expression provided.\",\n            \"Substring
+        match.\",\n            \"The value should match the match expression entirely.\",\n
+        \           \"Integer comparison filters. case sensitivity is ignored for
+        these and the expression is assumed to be a string representing an integer.
+        Failure conditions: - If expression is not a valid int64, the client should
+        expect an error. - Input dimensions that are not valid int64 values will never
+        match the filter.\",\n            \"Checks if the dimension is numerically
+        greater than the match expression. Read the description for `NUMERIC_EQUALS`
+        for restrictions.\",\n            \"Checks if the dimension is numerically
+        less than the match expression. Read the description for `NUMERIC_EQUALS`
+        for restrictions.\",\n            \"This option is used to specify a dimension
+        filter whose expression can take any value from a selected list of values.
+        This helps avoiding evaluating multiple exact match dimension filters which
+        are OR'ed for every single response row. For example: expressions: [\\\"A\\\",
+        \\\"B\\\", \\\"C\\\"] Any response row whose dimension has it is value as
+        A, B or C, matches this DimensionFilter.\"\n          ]\n        },\n        \"expressions\":
+        {\n          \"items\": {\n            \"type\": \"string\"\n          },\n
+        \         \"type\": \"array\",\n          \"description\": \"Strings or regular
+        expression to match against. Only the first value of the list is used for
+        comparison unless the operator is `IN_LIST`. If `IN_LIST` operator, then the
+        entire list is used to filter the dimensions as explained in the description
+        of the `IN_LIST` operator.\"\n        }\n      },\n      \"id\": \"DimensionFilter\",\n
+        \     \"description\": \"Dimension filter specifies the filtering options
+        on a dimension.\",\n      \"type\": \"object\"\n    },\n    \"ReportRequest\":
+        {\n      \"properties\": {\n        \"metricFilterClauses\": {\n          \"items\":
+        {\n            \"$ref\": \"MetricFilterClause\"\n          },\n          \"description\":
+        \"The metric filter clauses. They are logically combined with the `AND` operator.
+        Metric filters look at only the first date range and not the comparing date
+        range. Note that filtering on metrics occurs after the metrics are aggregated.\",\n
+        \         \"type\": \"array\"\n        },\n        \"dimensions\": {\n          \"type\":
+        \"array\",\n          \"items\": {\n            \"$ref\": \"Dimension\"\n
+        \         },\n          \"description\": \"The dimensions requested. Requests
+        can have a total of 9 dimensions.\"\n        },\n        \"pageSize\": {\n
+        \         \"type\": \"integer\",\n          \"format\": \"int32\",\n          \"description\":
+        \"Page size is for paging and specifies the maximum number of returned rows.
+        Page size should be \\u003e= 0. A query returns the default of 1,000 rows.
+        The Analytics Core Reporting API returns a maximum of 100,000 rows per request,
+        no matter how many you ask for. It can also return fewer rows than requested,
+        if there aren't as many dimension segments as you expect. For instance, there
+        are fewer than 300 possible values for `ga:country`, so when segmenting only
+        by country, you can't get more than 300 rows, even if you set `pageSize` to
+        a higher value.\"\n        },\n        \"segments\": {\n          \"items\":
+        {\n            \"$ref\": \"Segment\"\n          },\n          \"type\": \"array\",\n
+        \         \"description\": \"Segment the data returned for the request. A
+        segment definition helps look at a subset of the segment request. A request
+        can contain up to four segments. Every [ReportRequest](#ReportRequest) within
+        a `batchGet` method must contain the same `segments` definition. Requests
+        with segments must have the `ga:segment` dimension.\"\n        },\n        \"dimensionFilterClauses\":
+        {\n          \"description\": \"The dimension filter clauses for filtering
+        Dimension Values. They are logically combined with the `AND` operator. Note
+        that filtering occurs before any dimensions are aggregated, so that the returned
+        metrics represent the total for only the relevant dimensions.\",\n          \"items\":
+        {\n            \"$ref\": \"DimensionFilterClause\"\n          },\n          \"type\":
+        \"array\"\n        },\n        \"includeEmptyRows\": {\n          \"description\":
+        \"If set to false, the response does not include rows if all the retrieved
+        metrics are equal to zero. The default is false which will exclude these rows.\",\n
+        \         \"type\": \"boolean\"\n        },\n        \"dateRanges\": {\n          \"items\":
+        {\n            \"$ref\": \"DateRange\"\n          },\n          \"description\":
+        \"Date ranges in the request. The request can have a maximum of 2 date ranges.
+        The response will contain a set of metric values for each combination of the
+        dimensions for each date range in the request. So, if there are two date ranges,
+        there will be two set of metric values, one for the original date range and
+        one for the second date range. The `reportRequest.dateRanges` field should
+        not be specified for cohorts or Lifetime value requests. If a date range is
+        not provided, the default date range is (startDate: current date - 7 days,
+        endDate: current date - 1 day). Every [ReportRequest](#ReportRequest) within
+        a `batchGet` method must contain the same `dateRanges` definition.\",\n          \"type\":
+        \"array\"\n        },\n        \"pivots\": {\n          \"items\": {\n            \"$ref\":
+        \"Pivot\"\n          },\n          \"type\": \"array\",\n          \"description\":
+        \"The pivot definitions. Requests can have a maximum of 2 pivots.\"\n        },\n
+        \       \"filtersExpression\": {\n          \"type\": \"string\",\n          \"description\":
+        \"Dimension or metric filters that restrict the data returned for your request.
+        To use the `filtersExpression`, supply a dimension or metric on which to filter,
+        followed by the filter expression. For example, the following expression selects
+        `ga:browser` dimension which starts with Firefox; `ga:browser=~^Firefox`.
+        For more information on dimensions and metric filters, see [Filters reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).\"\n
+        \       },\n        \"orderBys\": {\n          \"description\": \"Sort order
+        on output rows. To compare two rows, the elements of the following are applied
+        in order until a difference is found. All date ranges in the output get the
+        same row order.\",\n          \"type\": \"array\",\n          \"items\": {\n
+        \           \"$ref\": \"OrderBy\"\n          }\n        },\n        \"pageToken\":
+        {\n          \"type\": \"string\",\n          \"description\": \"A continuation
+        token to get the next page of the results. Adding this to the request will
+        return the rows after the pageToken. The pageToken should be the value returned
+        in the nextPageToken parameter in the response to the GetReports request.\"\n
+        \       },\n        \"metrics\": {\n          \"type\": \"array\",\n          \"description\":
+        \"The metrics requested. Requests must specify at least one metric. Requests
+        can have a total of 10 metrics.\",\n          \"items\": {\n            \"$ref\":
+        \"Metric\"\n          }\n        },\n        \"hideTotals\": {\n          \"type\":
+        \"boolean\",\n          \"description\": \"If set to true, hides the total
+        of all metrics for all the matching rows, for every date range. The default
+        false and will return the totals.\"\n        },\n        \"cohortGroup\":
+        {\n          \"description\": \"Cohort group associated with this request.
+        If there is a cohort group in the request the `ga:cohort` dimension must be
+        present. Every [ReportRequest](#ReportRequest) within a `batchGet` method
+        must contain the same `cohortGroup` definition.\",\n          \"$ref\": \"CohortGroup\"\n
+        \       },\n        \"samplingLevel\": {\n          \"enumDescriptions\":
+        [\n            \"If the `samplingLevel` field is unspecified the `DEFAULT`
+        sampling level is used.\",\n            \"Returns response with a sample size
+        that balances speed and accuracy.\",\n            \"It returns a fast response
+        with a smaller sampling size.\",\n            \"Returns a more accurate response
+        using a large sampling size. But this may result in response being slower.\"\n
+        \         ],\n          \"type\": \"string\",\n          \"description\":
+        \"The desired report [sample](https://support.google.com/analytics/answer/2637192)
+        size. If the the `samplingLevel` field is unspecified the `DEFAULT` sampling
+        level is used. Every [ReportRequest](#ReportRequest) within a `batchGet` method
+        must contain the same `samplingLevel` definition. See [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        for details.\",\n          \"enum\": [\n            \"SAMPLING_UNSPECIFIED\",\n
+        \           \"DEFAULT\",\n            \"SMALL\",\n            \"LARGE\"\n
+        \         ]\n        },\n        \"viewId\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"The Analytics [view ID](https://support.google.com/analytics/answer/1009618)
+        from which to retrieve data. Every [ReportRequest](#ReportRequest) within
+        a `batchGet` method must contain the same `viewId`.\"\n        },\n        \"hideValueRanges\":
+        {\n          \"description\": \"If set to true, hides the minimum and maximum
+        across all matching rows. The default is false and the value ranges are returned.\",\n
+        \         \"type\": \"boolean\"\n        }\n      },\n      \"type\": \"object\",\n
+        \     \"id\": \"ReportRequest\",\n      \"description\": \"The main request
+        class which specifies the Reporting API request.\"\n    },\n    \"TransactionData\":
+        {\n      \"id\": \"TransactionData\",\n      \"properties\": {\n        \"transactionShipping\":
+        {\n          \"format\": \"double\",\n          \"description\": \"Total cost
+        of shipping.\",\n          \"type\": \"number\"\n        },\n        \"transactionId\":
+        {\n          \"description\": \"The transaction ID, supplied by the e-commerce
+        tracking method, for the purchase in the shopping cart.\",\n          \"type\":
+        \"string\"\n        },\n        \"transactionTax\": {\n          \"description\":
+        \"Total tax for the transaction.\",\n          \"type\": \"number\",\n          \"format\":
+        \"double\"\n        },\n        \"transactionRevenue\": {\n          \"description\":
+        \"The total sale revenue (excluding shipping and tax) of the transaction.\",\n
+        \         \"format\": \"double\",\n          \"type\": \"number\"\n        }\n
+        \     },\n      \"description\": \"Represents details collected when the visitor
+        performs a transaction on the page.\",\n      \"type\": \"object\"\n    },\n
+        \   \"Pivot\": {\n      \"properties\": {\n        \"metrics\": {\n          \"description\":
+        \"The pivot metrics. Pivot metrics are part of the restriction on total number
+        of metrics allowed in the request.\",\n          \"type\": \"array\",\n          \"items\":
+        {\n            \"$ref\": \"Metric\"\n          }\n        },\n        \"dimensions\":
+        {\n          \"items\": {\n            \"$ref\": \"Dimension\"\n          },\n
+        \         \"type\": \"array\",\n          \"description\": \"A list of dimensions
+        to show as pivot columns. A Pivot can have a maximum of 4 dimensions. Pivot
+        dimensions are part of the restriction on the total number of dimensions allowed
+        in the request.\"\n        },\n        \"startGroup\": {\n          \"format\":
+        \"int32\",\n          \"type\": \"integer\",\n          \"description\": \"If
+        k metrics were requested, then the response will contain some data-dependent
+        multiple of k columns in the report. E.g., if you pivoted on the dimension
+        `ga:browser` then you'd get k columns for \\\"Firefox\\\", k columns for \\\"IE\\\",
+        k columns for \\\"Chrome\\\", etc. The ordering of the groups of columns is
+        determined by descending order of \\\"total\\\" for the first of the k values.
+        Ties are broken by lexicographic ordering of the first pivot dimension, then
+        lexicographic ordering of the second pivot dimension, and so on. E.g., if
+        the totals for the first value for Firefox, IE, and Chrome were 8, 2, 8, respectively,
+        the order of columns would be Chrome, Firefox, IE. The following let you choose
+        which of the groups of k columns are included in the response.\"\n        },\n
+        \       \"maxGroupCount\": {\n          \"format\": \"int32\",\n          \"description\":
+        \"Specifies the maximum number of groups to return. The default value is 10,
+        also the maximum value is 1,000.\",\n          \"type\": \"integer\"\n        },\n
+        \       \"dimensionFilterClauses\": {\n          \"items\": {\n            \"$ref\":
+        \"DimensionFilterClause\"\n          },\n          \"description\": \"DimensionFilterClauses
+        are logically combined with an `AND` operator: only data that is included
+        by all these DimensionFilterClauses contributes to the values in this pivot
+        region. Dimension filters can be used to restrict the columns shown in the
+        pivot region. For example if you have `ga:browser` as the requested dimension
+        in the pivot region, and you specify key filters to restrict `ga:browser`
+        to only \\\"IE\\\" or \\\"Firefox\\\", then only those two browsers would
+        show up as columns.\",\n          \"type\": \"array\"\n        }\n      },\n
+        \     \"type\": \"object\",\n      \"id\": \"Pivot\",\n      \"description\":
+        \"The Pivot describes the pivot section in the request. The Pivot helps rearrange
+        the information in the table for certain reports by pivoting your data on
+        a second dimension.\"\n    },\n    \"Activity\": {\n      \"id\": \"Activity\",\n
+        \     \"description\": \"An Activity represents data for an activity of a
+        user. Note that an Activity is different from a hit. A hit might result in
+        multiple Activity's. For example, if a hit includes a transaction and a goal
+        completion, there will be two Activity protos for this hit, one for ECOMMERCE
+        and one for GOAL. Conversely, multiple hits can also construct one Activity.
+        In classic e-commerce, data for one transaction might be sent through multiple
+        hits. These hits will be merged into one ECOMMERCE Activity.\",\n      \"properties\":
+        {\n        \"hostname\": {\n          \"type\": \"string\",\n          \"description\":
+        \"The hostname from which the tracking request was made.\"\n        },\n        \"appview\":
+        {\n          \"description\": \"This will be set if `activity_type` equals
+        `SCREEN_VIEW`.\",\n          \"$ref\": \"ScreenviewData\"\n        },\n        \"customDimension\":
+        {\n          \"description\": \"A list of all custom dimensions associated
+        with this activity.\",\n          \"items\": {\n            \"$ref\": \"CustomDimension\"\n
+        \         },\n          \"type\": \"array\"\n        },\n        \"channelGrouping\":
+        {\n          \"description\": \"The Channel Group associated with an end user's
+        session for this View (defined by the View's Channel Groupings).\",\n          \"type\":
+        \"string\"\n        },\n        \"pageview\": {\n          \"description\":
+        \"This will be set if `activity_type` equals `PAGEVIEW`. This field contains
+        all the details about the visitor and the page that was visited.\",\n          \"$ref\":
+        \"PageviewData\"\n        },\n        \"event\": {\n          \"description\":
+        \"This field contains all the details pertaining to an event and will be set
+        if `activity_type` equals `EVENT`.\",\n          \"$ref\": \"EventData\"\n
+        \       },\n        \"activityTime\": {\n          \"description\": \"Timestamp
+        of the activity. If activities for a visit cross midnight and occur in two
+        separate dates, then two sessions (one per date) share the session identifier.
+        For example, say session ID 113472 has activity within 2019-08-20, and session
+        ID 243742 has activity within 2019-08-25 and 2019-08-26. Session ID 113472
+        is one session, and session ID 243742 is two sessions.\",\n          \"format\":
+        \"google-datetime\",\n          \"type\": \"string\"\n        },\n        \"landingPagePath\":
+        {\n          \"description\": \"The first page in users' sessions, or the
+        landing page.\",\n          \"type\": \"string\"\n        },\n        \"activityType\":
+        {\n          \"description\": \"Type of this activity.\",\n          \"type\":
+        \"string\",\n          \"enum\": [\n            \"ACTIVITY_TYPE_UNSPECIFIED\",\n
+        \           \"PAGEVIEW\",\n            \"SCREENVIEW\",\n            \"GOAL\",\n
+        \           \"ECOMMERCE\",\n            \"EVENT\"\n          ],\n          \"enumDescriptions\":
+        [\n            \"ActivityType will never have this value in the response.
+        Using this type in the request will result in an error.\",\n            \"Used
+        when the activity resulted out of a visitor viewing a page.\",\n            \"Used
+        when the activity resulted out of a visitor using an application on a mobile
+        device.\",\n            \"Used to denote that a goal type activity.\",\n            \"An
+        e-commerce transaction was performed by the visitor on the page.\",\n            \"Used
+        when the activity is an event.\"\n          ]\n        },\n        \"keyword\":
+        {\n          \"type\": \"string\",\n          \"description\": \"For manual
+        campaign tracking, it is the value of the utm_term campaign tracking parameter.
+        For AdWords traffic, it contains the best matching targeting criteria. For
+        the display network, where multiple targeting criteria could have caused the
+        ad to show up, it returns the best matching targeting criteria as selected
+        by Ads. This could be display_keyword, site placement, boomuserlist, user_interest,
+        age, or gender. Otherwise its value is (not set).\"\n        },\n        \"source\":
+        {\n          \"description\": \"The source of referrals. For manual campaign
+        tracking, it is the value of the utm_source campaign tracking parameter. For
+        AdWords autotagging, it is google. If you use neither, it is the domain of
+        the source (e.g., document.referrer) referring the users. It may also contain
+        a port address. If users arrived without a referrer, its value is (direct).\",\n
+        \         \"type\": \"string\"\n        },\n        \"campaign\": {\n          \"description\":
+        \"For manual campaign tracking, it is the value of the utm_campaign campaign
+        tracking parameter. For AdWords autotagging, it is the name(s) of the online
+        ad campaign(s) you use for the property. If you use neither, its value is
+        (not set).\",\n          \"type\": \"string\"\n        },\n        \"ecommerce\":
+        {\n          \"$ref\": \"EcommerceData\",\n          \"description\": \"This
+        will be set if `activity_type` equals `ECOMMERCE`.\"\n        },\n        \"goals\":
+        {\n          \"$ref\": \"GoalSetData\",\n          \"description\": \"This
+        field contains a list of all the goals that were reached in this activity
+        when `activity_type` equals `GOAL`.\"\n        },\n        \"medium\": {\n
+        \         \"description\": \"The type of referrals. For manual campaign tracking,
+        it is the value of the utm_medium campaign tracking parameter. For AdWords
+        autotagging, it is cpc. If users came from a search engine detected by Google
+        Analytics, it is organic. If the referrer is not a search engine, it is referral.
+        If users came directly to the property and document.referrer is empty, its
+        value is (none).\",\n          \"type\": \"string\"\n        }\n      },\n
+        \     \"type\": \"object\"\n    },\n    \"UserActivitySession\": {\n      \"properties\":
+        {\n        \"platform\": {\n          \"type\": \"string\",\n          \"description\":
+        \"Platform on which the activity happened: \\\"android\\\", \\\"ios\\\" etc.\"\n
+        \       },\n        \"sessionId\": {\n          \"description\": \"Unique
+        ID of the session.\",\n          \"type\": \"string\"\n        },\n        \"activities\":
+        {\n          \"items\": {\n            \"$ref\": \"Activity\"\n          },\n
+        \         \"description\": \"Represents a detailed view into each of the activity
+        in this session.\",\n          \"type\": \"array\"\n        },\n        \"deviceCategory\":
+        {\n          \"description\": \"The type of device used: \\\"mobile\\\", \\\"tablet\\\"
+        etc.\",\n          \"type\": \"string\"\n        },\n        \"sessionDate\":
+        {\n          \"type\": \"string\",\n          \"description\": \"Date of this
+        session in ISO-8601 format.\"\n        },\n        \"dataSource\": {\n          \"description\":
+        \"The data source of a hit. By default, hits sent from analytics.js are reported
+        as \\\"web\\\" and hits sent from the mobile SDKs are reported as \\\"app\\\".
+        These values can be overridden in the Measurement Protocol.\",\n          \"type\":
+        \"string\"\n        }\n      },\n      \"description\": \"This represents
+        a user session performed on a specific device at a certain time over a period
+        of time.\",\n      \"id\": \"UserActivitySession\",\n      \"type\": \"object\"\n
+        \   },\n    \"DateRange\": {\n      \"type\": \"object\",\n      \"properties\":
+        {\n        \"startDate\": {\n          \"type\": \"string\",\n          \"description\":
+        \"The start date for the query in the format `YYYY-MM-DD`.\"\n        },\n
+        \       \"endDate\": {\n          \"description\": \"The end date for the
+        query in the format `YYYY-MM-DD`.\",\n          \"type\": \"string\"\n        }\n
+        \     },\n      \"id\": \"DateRange\",\n      \"description\": \"A contiguous
+        set of days: startDate, startDate + 1 day, ..., endDate. The start and end
+        dates are specified in [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) date
+        format `YYYY-MM-DD`.\"\n    },\n    \"SearchUserActivityResponse\": {\n      \"description\":
+        \"The response from `userActivity:get` call.\",\n      \"properties\": {\n
+        \       \"sessions\": {\n          \"description\": \"Each record represents
+        a session (device details, duration, etc).\",\n          \"items\": {\n            \"$ref\":
+        \"UserActivitySession\"\n          },\n          \"type\": \"array\"\n        },\n
+        \       \"totalRows\": {\n          \"type\": \"integer\",\n          \"description\":
+        \"Total rows returned by this query (across different pages).\",\n          \"format\":
+        \"int32\"\n        },\n        \"nextPageToken\": {\n          \"type\": \"string\",\n
+        \         \"description\": \"This token should be passed to [SearchUserActivityRequest](#SearchUserActivityRequest)
+        to retrieve the next page.\"\n        },\n        \"sampleRate\": {\n          \"format\":
+        \"double\",\n          \"description\": \"This field represents the [sampling
+        rate](https://support.google.com/analytics/answer/2637192) for the given request
+        and is a number between 0.0 to 1.0. See [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+        for details.\",\n          \"type\": \"number\"\n        }\n      },\n      \"type\":
+        \"object\",\n      \"id\": \"SearchUserActivityResponse\"\n    },\n    \"PageviewData\":
+        {\n      \"type\": \"object\",\n      \"id\": \"PageviewData\",\n      \"properties\":
+        {\n        \"pageTitle\": {\n          \"type\": \"string\",\n          \"description\":
+        \"The title of the page that the visitor viewed.\"\n        },\n        \"pagePath\":
+        {\n          \"type\": \"string\",\n          \"description\": \"The URL of
+        the page that the visitor viewed.\"\n        }\n      },\n      \"description\":
+        \"Represents details collected when the visitor views a page.\"\n    },\n
+        \   \"SegmentDimensionFilter\": {\n      \"id\": \"SegmentDimensionFilter\",\n
+        \     \"properties\": {\n        \"expressions\": {\n          \"description\":
+        \"The list of expressions, only the first element is used for all operators\",\n
+        \         \"items\": {\n            \"type\": \"string\"\n          },\n          \"type\":
+        \"array\"\n        },\n        \"caseSensitive\": {\n          \"type\": \"boolean\",\n
+        \         \"description\": \"Should the match be case sensitive, ignored for
+        `IN_LIST` operator.\"\n        },\n        \"operator\": {\n          \"enumDescriptions\":
+        [\n            \"If the match type is unspecified, it is treated as a REGEXP.\",\n
+        \           \"The match expression is treated as a regular expression. All
+        other match types are not treated as regular expressions.\",\n            \"Matches
+        the values which begin with the match expression provided.\",\n            \"Matches
+        the values which end with the match expression provided.\",\n            \"Substring
+        match.\",\n            \"The value should match the match expression entirely.\",\n
+        \           \"This option is used to specify a dimension filter whose expression
+        can take any value from a selected list of values. This helps avoiding evaluating
+        multiple exact match dimension filters which are OR'ed for every single response
+        row. For example: expressions: [\\\"A\\\", \\\"B\\\", \\\"C\\\"] Any response
+        row whose dimension has it is value as A, B or C, matches this DimensionFilter.\",\n
+        \           \"Integer comparison filters. case sensitivity is ignored for
+        these and the expression is assumed to be a string representing an integer.
+        Failure conditions: - if expression is not a valid int64, the client should
+        expect an error. - input dimensions that are not valid int64 values will never
+        match the filter. Checks if the dimension is numerically less than the match
+        expression.\",\n            \"Checks if the dimension is numerically greater
+        than the match expression.\",\n            \"Checks if the dimension is numerically
+        between the minimum and maximum of the match expression, boundaries excluded.\"\n
+        \         ],\n          \"type\": \"string\",\n          \"enum\": [\n            \"OPERATOR_UNSPECIFIED\",\n
+        \           \"REGEXP\",\n            \"BEGINS_WITH\",\n            \"ENDS_WITH\",\n
+        \           \"PARTIAL\",\n            \"EXACT\",\n            \"IN_LIST\",\n
+        \           \"NUMERIC_LESS_THAN\",\n            \"NUMERIC_GREATER_THAN\",\n
+        \           \"NUMERIC_BETWEEN\"\n          ],\n          \"description\":
+        \"The operator to use to match the dimension with the expressions.\"\n        },\n
+        \       \"maxComparisonValue\": {\n          \"description\": \"Maximum comparison
+        values for `BETWEEN` match type.\",\n          \"type\": \"string\"\n        },\n
+        \       \"dimensionName\": {\n          \"type\": \"string\",\n          \"description\":
+        \"Name of the dimension for which the filter is being applied.\"\n        },\n
+        \       \"minComparisonValue\": {\n          \"type\": \"string\",\n          \"description\":
+        \"Minimum comparison values for `BETWEEN` match type.\"\n        }\n      },\n
+        \     \"description\": \"Dimension filter specifies the filtering options
+        on a dimension.\",\n      \"type\": \"object\"\n    },\n    \"DynamicSegment\":
+        {\n      \"id\": \"DynamicSegment\",\n      \"description\": \"Dynamic segment
+        definition for defining the segment within the request. A segment can select
+        users, sessions or both.\",\n      \"properties\": {\n        \"name\": {\n
+        \         \"type\": \"string\",\n          \"description\": \"The name of
+        the dynamic segment.\"\n        },\n        \"userSegment\": {\n          \"$ref\":
+        \"SegmentDefinition\",\n          \"description\": \"User Segment to select
+        users to include in the segment.\"\n        },\n        \"sessionSegment\":
+        {\n          \"$ref\": \"SegmentDefinition\",\n          \"description\":
+        \"Session Segment to select sessions to include in the segment.\"\n        }\n
+        \     },\n      \"type\": \"object\"\n    },\n    \"SequenceSegment\": {\n
+        \     \"properties\": {\n        \"segmentSequenceSteps\": {\n          \"items\":
+        {\n            \"$ref\": \"SegmentSequenceStep\"\n          },\n          \"type\":
+        \"array\",\n          \"description\": \"The list of steps in the sequence.\"\n
+        \       },\n        \"firstStepShouldMatchFirstHit\": {\n          \"description\":
+        \"If set, first step condition must match the first hit of the visitor (in
+        the date range).\",\n          \"type\": \"boolean\"\n        }\n      },\n
+        \     \"type\": \"object\",\n      \"description\": \"Sequence conditions
+        consist of one or more steps, where each step is defined by one or more dimension/metric
+        conditions. Multiple steps can be combined with special sequence operators.\",\n
+        \     \"id\": \"SequenceSegment\"\n    },\n    \"MetricHeader\": {\n      \"description\":
+        \"The headers for the metrics.\",\n      \"properties\": {\n        \"metricHeaderEntries\":
+        {\n          \"items\": {\n            \"$ref\": \"MetricHeaderEntry\"\n          },\n
+        \         \"description\": \"Headers for the metrics in the response.\",\n
+        \         \"type\": \"array\"\n        },\n        \"pivotHeaders\": {\n          \"type\":
+        \"array\",\n          \"items\": {\n            \"$ref\": \"PivotHeader\"\n
+        \         },\n          \"description\": \"Headers for the pivots in the response.\"\n
+        \       }\n      },\n      \"type\": \"object\",\n      \"id\": \"MetricHeader\"\n
+        \   },\n    \"PivotHeaderEntry\": {\n      \"type\": \"object\",\n      \"id\":
+        \"PivotHeaderEntry\",\n      \"description\": \"The headers for the each of
+        the metric column corresponding to the metrics requested in the pivots section
+        of the response.\",\n      \"properties\": {\n        \"dimensionNames\":
+        {\n          \"type\": \"array\",\n          \"description\": \"The name of
+        the dimensions in the pivot response.\",\n          \"items\": {\n            \"type\":
+        \"string\"\n          }\n        },\n        \"dimensionValues\": {\n          \"items\":
+        {\n            \"type\": \"string\"\n          },\n          \"type\": \"array\",\n
+        \         \"description\": \"The values for the dimensions in the pivot.\"\n
+        \       },\n        \"metric\": {\n          \"description\": \"The metric
+        header for the metric in the pivot.\",\n          \"$ref\": \"MetricHeaderEntry\"\n
+        \       }\n      }\n    }\n  },\n  \"revision\": \"20220816\",\n  \"kind\":
+        \"discovery#restDescription\",\n  \"fullyEncodeReservedExpansion\": true,\n
+        \ \"ownerName\": \"Google\",\n  \"auth\": {\n    \"oauth2\": {\n      \"scopes\":
+        {\n        \"https://www.googleapis.com/auth/analytics.readonly\": {\n          \"description\":
+        \"See and download your Google Analytics data\"\n        },\n        \"https://www.googleapis.com/auth/analytics\":
+        {\n          \"description\": \"View and manage your Google Analytics data\"\n
+        \       }\n      }\n    }\n  },\n  \"batchPath\": \"batch\",\n  \"description\":
+        \"Accesses Analytics report data.\",\n  \"servicePath\": \"\",\n  \"discoveryVersion\":
+        \"v1\",\n  \"protocol\": \"rest\",\n  \"documentationLink\": \"https://developers.google.com/analytics/devguides/reporting/core/v4/\",\n
+        \ \"id\": \"analyticsreporting:v4\",\n  \"resources\": {\n    \"userActivity\":
+        {\n      \"methods\": {\n        \"search\": {\n          \"request\": {\n
+        \           \"$ref\": \"SearchUserActivityRequest\"\n          },\n          \"scopes\":
+        [\n            \"https://www.googleapis.com/auth/analytics\",\n            \"https://www.googleapis.com/auth/analytics.readonly\"\n
+        \         ],\n          \"httpMethod\": \"POST\",\n          \"path\": \"v4/userActivity:search\",\n
+        \         \"parameterOrder\": [],\n          \"response\": {\n            \"$ref\":
+        \"SearchUserActivityResponse\"\n          },\n          \"description\": \"Returns
+        User Activity data.\",\n          \"parameters\": {},\n          \"id\": \"analyticsreporting.userActivity.search\",\n
+        \         \"flatPath\": \"v4/userActivity:search\"\n        }\n      }\n    },\n
+        \   \"reports\": {\n      \"methods\": {\n        \"batchGet\": {\n          \"path\":
+        \"v4/reports:batchGet\",\n          \"flatPath\": \"v4/reports:batchGet\",\n
+        \         \"request\": {\n            \"$ref\": \"GetReportsRequest\"\n          },\n
+        \         \"id\": \"analyticsreporting.reports.batchGet\",\n          \"httpMethod\":
+        \"POST\",\n          \"parameterOrder\": [],\n          \"scopes\": [\n            \"https://www.googleapis.com/auth/analytics\",\n
+        \           \"https://www.googleapis.com/auth/analytics.readonly\"\n          ],\n
+        \         \"parameters\": {},\n          \"response\": {\n            \"$ref\":
+        \"GetReportsResponse\"\n          },\n          \"description\": \"Returns
+        the Analytics data.\"\n        }\n      }\n    }\n  },\n  \"canonicalName\":
+        \"AnalyticsReporting\",\n  \"title\": \"Analytics Reporting API\",\n  \"basePath\":
+        \"\",\n  \"icons\": {\n    \"x16\": \"http://www.google.com/images/icons/product/search-16.gif\",\n
+        \   \"x32\": \"http://www.google.com/images/icons/product/search-32.gif\"\n
+        \ },\n  \"name\": \"analyticsreporting\",\n  \"version_module\": true\n}\n"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Cache-Control:
+      - private
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 05 Sep 2022 09:33:04 GMT
+      Server:
+      - ESF
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - X-Origin
+      - Referer
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - '0'
+      content-length:
+      - '75735'
+    status:
+      code: 200
+      message: OK
+version: 1

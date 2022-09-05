@@ -108,3 +108,4 @@ files/
 client_secrets.json
 reports.json
 .idea
+/tests/catalogs/
