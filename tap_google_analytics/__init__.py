@@ -103,6 +103,7 @@ def sync(config, state, catalog):
                 LOGGER.error("Skipping stream: '{}' due to invalid report definition.".format(stream_id))
                 LOGGER.debug("Error: '{}'.".format(e))
             except TapGaRateLimitError as e:
+                errors_encountered = True
                 state['partial'] = {'partial': True, 'resume': False}
                 singer.write_state(state)
                 LOGGER.error("Skipping stream: '{}' due to Rate Limit Errors.".format(stream_id))
