@@ -9,7 +9,7 @@ import tap_google_analytics.ga_client as gc
 from babelfish.utilities import load_json
 
 
-class MyTestCase(unittest.TestCase):
+class TestTapFunctions(unittest.TestCase):
 
     config: dict
 
