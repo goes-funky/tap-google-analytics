@@ -8,6 +8,7 @@ jobs:
     uses: goes-funky/workflows/.github/workflows/build-python.yaml@master
     with:
       python-version: "3.9"
+      is-repo-public: true
       skip-mypy: true
       skip-tests: false
       skip-isort: true
