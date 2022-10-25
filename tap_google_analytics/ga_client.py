@@ -159,8 +159,13 @@ class GAClient:
                 user_agent="tap-google-analytics (via singer.io)"
             )
             logging.info("refreshing access token")
-            credentials.refresh(httplib2.Http())
-            logging.info("refreshed successfully")
+            try:
+                credentials.refresh(httplib2.Http())
+
+                logging.info("refreshed successfully")
+            except Exception as e:
+                logging.info("Failed to refresh access token; continuing with current one.")
+
             return credentials
         else:
             return ServiceAccountCredentials.from_json_keyfile_dict(config['client_secrets'], SCOPES)
