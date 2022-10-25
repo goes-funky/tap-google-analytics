@@ -4,6 +4,9 @@ version = "0.2.0"
 description = "Tap for Google Analytics integration"
 authors = ["Salih Tuç <salih.tuc@y42.com>"]
 
+[tool.poetry.scripts]
+tap-google-analytics = "tap_google_analytics:main"
+
 [tool.poetry.dependencies]
 python = "^3.9"
 singer-python = "5.12.2"
