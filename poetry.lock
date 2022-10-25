@@ -13,27 +13,6 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)"
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "cloudpickle"]
 
 [[package]]
-name = "babel-fish-sdk"
-version = "0.0.5"
-description = ""
-category = "main"
-optional = false
-python-versions = ">=3.7.*"
-develop = false
-
-[package.dependencies]
-pytz = "2021.1"
-
-[package.extras]
-develop = ["pdoc (==8.0.0)", "mypy (==0.910)", "pylint (==2.11.1)", "pytest (==6.2.5)"]
-
-[package.source]
-type = "git"
-url = "git@github.com:goes-funky/babel-fish-sdk.git"
-reference = "0bf1056b113928958bfdac7cfbe40e276083ff20"
-resolved_reference = "0bf1056b113928958bfdac7cfbe40e276083ff20"
-
-[[package]]
 name = "backoff"
 version = "1.8.0"
 description = "Function decoration for backoff and retry"
@@ -300,7 +279,7 @@ six = ">=1.5"
 
 [[package]]
 name = "pytz"
-version = "2021.1"
+version = "2022.5"
 description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
@@ -413,11 +392,10 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ea7a08ed14a0155c7abcc6791cbef903ab1c6c378417d6a53d7446d0ef4d6846"
+content-hash = "505d17ddac5f3b723c04f295e3a2e315df074ddcc710b7b02022b38958a8d0ac"
 
 [metadata.files]
 attrs = []
-babel-fish-sdk = []
 backoff = []
 cachetools = []
 ciso8601 = []

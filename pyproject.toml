@@ -6,7 +6,6 @@ authors = ["Salih Tuç <salih.tuc@y42.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-babel_fish_sdk = { git = "git@github.com:goes-funky/babel-fish-sdk.git", rev = "0bf1056b113928958bfdac7cfbe40e276083ff20" }
 singer-python = "5.12.2"
 google-api-python-client = "1.7.9"
 oauth2client = "4.1.3"
