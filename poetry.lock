@@ -13,12 +13,33 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)"
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "mypy (>=0.900,!=0.940)", "pytest-mypy-plugins", "cloudpickle"]
 
 [[package]]
+name = "babel-fish-sdk"
+version = "0.0.5"
+description = ""
+category = "main"
+optional = false
+python-versions = ">=3.7.*"
+develop = false
+
+[package.dependencies]
+pytz = "2021.1"
+
+[package.extras]
+develop = ["pdoc (==8.0.0)", "mypy (==0.910)", "pylint (==2.11.1)", "pytest (==6.2.5)"]
+
+[package.source]
+type = "git"
+url = "git@github.com:goes-funky/babel-fish-sdk.git"
+reference = "0bf1056b113928958bfdac7cfbe40e276083ff20"
+resolved_reference = "0bf1056b113928958bfdac7cfbe40e276083ff20"
+
+[[package]]
 name = "backoff"
-version = "1.3.2"
+version = "1.8.0"
 description = "Function decoration for backoff and retry"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
 name = "cachetools"
@@ -27,6 +48,14 @@ description = "Extensible memoizing collections and decorators"
 category = "main"
 optional = false
 python-versions = "~=3.7"
+
+[[package]]
+name = "ciso8601"
+version = "2.2.0"
+description = "Fast ISO8601 date time parser for Python written in C"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "colorama"
@@ -271,7 +300,7 @@ six = ">=1.5"
 
 [[package]]
 name = "pytz"
-version = "2018.4"
+version = "2021.1"
 description = "World timezone definitions, modern and historical"
 category = "main"
 optional = false
@@ -306,17 +335,18 @@ python-versions = "*"
 
 [[package]]
 name = "singer-python"
-version = "5.6.1"
+version = "5.12.2"
 description = "Singer.io utility library"
 category = "main"
 optional = false
 python-versions = "*"
 
 [package.dependencies]
-backoff = "1.3.2"
+backoff = "1.8.0"
+ciso8601 = "*"
 jsonschema = "2.6.0"
 python-dateutil = ">=2.6.0"
-pytz = "2018.4"
+pytz = ">=2018.4"
 simplejson = "3.11.1"
 
 [package.extras]
@@ -383,12 +413,14 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "f5af114ca2223701d0cbad6e9fb46d3506bf7cb391db7b5d4d6eea7596bb1924"
+content-hash = "ea7a08ed14a0155c7abcc6791cbef903ab1c6c378417d6a53d7446d0ef4d6846"
 
 [metadata.files]
 attrs = []
+babel-fish-sdk = []
 backoff = []
 cachetools = []
+ciso8601 = []
 colorama = []
 coverage = []
 exceptiongroup = []
