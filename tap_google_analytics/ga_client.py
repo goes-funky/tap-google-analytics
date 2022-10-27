@@ -8,15 +8,15 @@ import socket
 import datetime
 import httplib2
 import os
-from apiclient.discovery import build
-from apiclient.errors import HttpError
+
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 from pathlib import Path
 import traceback
 
 from dateutil.relativedelta import relativedelta
 from oauth2client.service_account import ServiceAccountCredentials
 from oauth2client.client import GoogleCredentials
-from google.oauth2.credentials import Credentials
 
 from tap_google_analytics.error import *
 
@@ -150,24 +150,20 @@ class GAClient:
 
     def initialize_credentials(self, config):
         if 'oauth_credentials' in config:
-            # credentials_o = GoogleCredentials(
-            #     access_token=config['oauth_credentials']['access_token'],
-            #     refresh_token=config['oauth_credentials']['refresh_token'],
-            #     client_id=config['oauth_credentials']['client_id'],
-            #     client_secret=config['oauth_credentials']['client_secret'],
-            #     token_expiry=None,  # let the library refresh the token if it is expired
-            #     token_uri="https://accounts.google.com/o/oauth2/token",
-            #     user_agent="tap-google-analytics (via singer.io)"
-            # )
-
-            credentials = Credentials(
-                token=config['oauth_credentials']['access_token'],
+            credentials = GoogleCredentials(
+                access_token=config['oauth_credentials']['access_token'],
                 refresh_token=config['oauth_credentials']['refresh_token'],
                 client_id=config['oauth_credentials']['client_id'],
                 client_secret=config['oauth_credentials']['client_secret'],
-                scopes=SCOPES,
-                token_uri="https://oauth2.googleapis.com/token",
+                token_expiry=None,  # let the library refresh the token if it is expired
+                token_uri="https://accounts.google.com/o/oauth2/token",
+                user_agent="tap-google-analytics (via singer.io)"
             )
+
+            logging.info("refreshing access token")
+            credentials.refresh(httplib2.Http())
+
+            logging.info("refreshed successfully")
 
             return credentials
         else:
