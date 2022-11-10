@@ -517,17 +517,67 @@
     "name": "coupon_report",
     "dimensions": [
       "ga:date",
+      "ga:campaign",
+      "ga:orderCouponCode",
       "ga:channelGrouping",
       "ga:source",
       "ga:sourceMedium",
       "ga:medium"
     ],
     "metrics": [
-      "ga:orderCouponCode",
-      "ga:productCouponCode",
       "ga:itemRevenue",
-      "ga:adClicks",
-      "ga:transactions"
+      "ga:transactions",
+      "ga:transactionRevenue"
+    ]
+  },
+  {
+    "name": "ecommerce_landing_report",
+    "dimensions": [
+      "ga:date",
+      "ga:country",
+      "ga:landingPagePath"
+    ],
+    "metrics": [
+      "ga:sessions",
+      "ga:avgSessionDuration",
+      "ga:bounceRate",
+      "ga:uniquePurchases",
+      "ga:quantityAddedToCart",
+      "ga:productCheckouts"
+    ]
+  },
+  {
+    "name": "traffic_sources_userType",
+    "dimensions": [
+      "ga:date",
+      "ga:userType",
+      "ga:country",
+      "ga:campaign",
+      "ga:sourceMedium",
+      "ga:keyword",
+      "ga:adContent"
+    ],
+    "metrics": [
+      "ga:users",
+      "ga:sessions",
+      "ga:pageviews"
+    ]
+  },
+  {
+    "name": "event_tracking",
+    "dimensions": [
+      "ga:eventCategory",
+      "ga:eventAction",
+      "ga:eventLabel",
+      "ga:landingPagePath"
+    ],
+    "metrics": [
+      "ga:totalEvents",
+      "ga:uniqueEvents",
+      "ga:eventValue",
+      "ga:avgEventValue",
+      "ga:sessionsWithEvent",
+      "ga:eventsPerSessionWithEvent"
     ]
   }
 ]
