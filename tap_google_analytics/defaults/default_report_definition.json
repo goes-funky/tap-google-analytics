@@ -569,7 +569,8 @@
       "ga:eventCategory",
       "ga:eventAction",
       "ga:eventLabel",
-      "ga:date"
+      "ga:date",
+      "ga:landingPagePath"
     ],
     "metrics": [
       "ga:totalEvents",
