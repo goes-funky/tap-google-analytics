@@ -595,5 +595,75 @@
       "ga:productAddsToCart",
       "ga:productCheckouts"
     ]
+  },
+    {
+    "name": "goal_conversions1_10_v2",
+    "dimensions": [
+      "ga:adcontent",
+      "ga:adgroup",
+      "ga:campaign",
+      "ga:countryisocode",
+      "ga:date",
+      "ga:keyword",
+      "ga:sourcemedium"
+    ],
+    "metrics": [
+      "ga:goal1completions",
+      "ga:goal2completions",
+      "ga:goal3completions",
+      "ga:goal4completions",
+      "ga:goal5completions",
+      "ga:goal6completions",
+      "ga:goal7completions",
+      "ga:goal8completions",
+      "ga:goal9completions",
+      "ga:goal10completions"
+    ]
+  },
+  {
+    "name": "goal_conversions11_20_v2",
+    "dimensions": [
+      "ga:adcontent",
+      "ga:adgroup",
+      "ga:campaign",
+      "ga:countryisocode",
+      "ga:date",
+      "ga:keyword",
+      "ga:sourcemedium"
+    ],
+    "metrics": [
+      "ga:goal11completions",
+      "ga:goal12completions",
+      "ga:goal13completions",
+      "ga:goal14completions",
+      "ga:goal15completions",
+      "ga:goal16completions",
+      "ga:goal17completions",
+      "ga:goal18completions",
+      "ga:goal19completions",
+      "ga:goal20completions"
+    ]
+  },
+    {
+    "name": "campaign_adcontent_performance_v3",
+    "dimensions": [
+      "ga:adcontent",
+      "ga:adgroup",
+      "ga:campaign",
+      "ga:countryisocode",
+      "ga:date",
+      "ga:keyword",
+      "ga:sourcemedium"
+    ],
+    "metrics": [
+      "ga:bounces",
+      "ga:newusers",
+      "ga:pageviews",
+      "ga:sessionduration",
+      "ga:sessions",
+      "ga:transactionrevenue",
+      "ga:transactions",
+      "ga:users"
+    ]
   }
 ]
